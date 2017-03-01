@@ -6,7 +6,6 @@ git_source(:github) do |repo_name|
 end
 
 gem 'rails', '~> 5.0.1'
-gem 'sqlite3'
 gem 'puma', '~> 3.0'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
@@ -26,6 +25,11 @@ gem 'bootstrap-sass', '~> 3.3.6'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  gem 'sqlite3'
+end
+
+group :production do
+  gem 'pg'
 end
 
 group :development do
