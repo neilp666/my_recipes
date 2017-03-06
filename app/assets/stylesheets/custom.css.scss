@@ -31,6 +31,10 @@ $navbar-default-bg: white;
   font-weight: bold;
 }
 
+.description {
+  margin-top: 0;
+}
+
 .jumbotron h2 {
   color: black;
   text-align: center;
@@ -46,4 +50,8 @@ $navbar-default-bg: white;
 .btn-xlarge:hover {
   color: #fff;
   text-decoration: none;
+}
+
+.well a {
+  color: #073B15;
 }
