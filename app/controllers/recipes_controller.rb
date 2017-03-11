@@ -22,7 +22,7 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.new(recipe_params)
-    @recipe.chef = Chef.first
+    @recipe.chef = current_chef
     if @recipe.save
       flash[:success] = "Recipe was created succesfully"
       redirect_to recipe_path(@recipe)
