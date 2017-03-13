@@ -1,10 +1,17 @@
 class RecipesController < ApplicationController
   before_action :set_recipe, only: [:show, :edit, :update, :destroy]
   before_action :require_user, except: [:index, :show]
-  before_action :require_some_user, only: [:edit, :update, :destroy]
+  before_action :require_same_user, only: [:edit, :update, :destroy]
 
   def index
     @recipes = Recipe.paginate(page: params[:page], per_page: 5)
+  end
+
+  def new
+    @recipe = Recipe.new
+  end
+
+  def show
   end
 
   def edit
@@ -19,9 +26,6 @@ class RecipesController < ApplicationController
     end
   end
 
-  def show
-  end
-
   def create
     @recipe = Recipe.new(recipe_params)
     @recipe.chef = current_chef
@@ -33,9 +37,6 @@ class RecipesController < ApplicationController
     end
   end
 
-  def new
-    @recipe = Recipe.new
-  end
 
   def destroy
     Recipe.find(params[:id]).destroy
@@ -54,7 +55,9 @@ class RecipesController < ApplicationController
   end
 
   def require_same_user
-    if current_chef != @chef
+    if current_chef != @recipe.chef and !current_chef.admin?
       flash[:danger] = "You can only edit or delete your own account"
+      redirect_to recipes_path
+    end
    end
 end

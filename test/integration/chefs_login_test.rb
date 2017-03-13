@@ -10,7 +10,7 @@ class ChefsLoginTest < ActionDispatch::IntegrationTest
     get login_path
     assert_template 'sessions/new'
     post login_path, params: { session: { email: " ", password: " "} }
-    assert_template 'sessions#new'
+    assert_template 'sessions/new'
     assert_not flash.empty?
     assert_select 'a[href=?]', login_path
     assert_select 'a[href=?]', logout_path, count: 0
