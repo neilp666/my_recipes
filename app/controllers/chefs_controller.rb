@@ -1,5 +1,8 @@
 class ChefsController < ApplicationController
-  before_action :sef_chef, only: [:show, :edit, :updated. :destroy]
+  before_action :sef_chef, only: [:show, :edit, :update, :destroy]
+  before_action :require_same_user, only: [:edit, :update, :destroy]
+
+
 
   def new
     @chef = Chef.new
@@ -12,19 +15,10 @@ class ChefsController < ApplicationController
   def edit
   end
 
-  def update
-    if @chef.update(chef_params)
-      flash[:success] = "Your account was updated successfully"
-      redirect_to @chef
-    else
-      render 'edit'
-    end
-  end
-
   def create
     @chef = Chef.new(chef_params)
     if @chef.save
-      session[:chef_id] = @chef.id
+      session[:chef_id] = @chef.id #log chef in automatically
       flash[:success] = "Welcome #{@chef.chefname} to MyRecipes App!"
       redirect_to chef_path(@chef)
     else
@@ -34,6 +28,15 @@ class ChefsController < ApplicationController
 
   def show
     @chef_recipes = @chef.recipes.paginate(page: params[:page], per_page: 5)
+  end
+
+  def update
+    if @chef.update(chef_params)
+      flash[:success] = "Your account was updated successfully"
+      redirect_to @chef
+    else
+      render 'edit'
+    end
   end
 
   def destroy
@@ -50,5 +53,10 @@ class ChefsController < ApplicationController
 
    def set_chef
     @chef = Chef.find(params[:id])
+   end
+
+   def require_same_user
+    if current_chef != @chef
+      flash[:danger] = "You can only edit or delete your own account"
    end
 end
