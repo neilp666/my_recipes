@@ -33,6 +33,7 @@ group :development, :test do
 end
 
 group :production do
+  gem 'redis', '~> 3.0'
   gem 'pg'
 end
 
