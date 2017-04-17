@@ -6,14 +6,15 @@
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://use.fontawesome.com/f40685afe6.js"></script>
   </head>
 
   <body>
 
-    <%= render 'layouts/navigation' %>
+   
     <%= render 'layouts/messages' %>
-    <div class="container">
+    
     <%= yield %>
-    </div>
+  
   </body>
 </html>
