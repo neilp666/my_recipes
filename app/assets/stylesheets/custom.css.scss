@@ -1,7 +1,37 @@
 $navbar-default-bg: white;
-@import url(http://fonts.googleapis.com/css?family=Pacifico|Raleway);
+@import url(https://fonts.googleapis.com/css?family=Pacifico|Raleway);
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+
+/* User sign in and sign forms. */
+.border-form-div {
+  max-width: 470px;
+  padding: 19px 29px 39px;
+  margin: 0 auto 20px;
+  margin-top: 45px;
+  background-color: #fff;
+  border: 1px solid #e5e5e5;
+  -webkit-border-radius: 5px;
+     -moz-border-radius: 5px;
+          border-radius: 5px;
+  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+     -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+          box-shadow: 0 1px 2px rgba(0,0,0,.05);
+}
+.border-form-div .form-signin-heading,
+.border-form-div .checkbox {
+  margin-bottom: 10px;
+}
+.border-form-div input[type="text"],
+.border-form-div input[type="email"],
+.border-form-div input[type="password"] {
+  font-size: 16px;
+  height: auto;
+  margin-bottom: 15px;
+  padding: 7px 9px;
+}
+
 
 #logo {
   font-size: 1.7em;
@@ -10,19 +40,10 @@ $navbar-default-bg: white;
   font-family: 'Pacifico'
 }
 
-.center {
-  text-align: center;
-}
-
-
 .description {
   margin-top: 0;
 }
 
-
-.btn-xlarge {
-  background-color: #073015
-}
 
 .btn-xlarge:hover {
   color: #fff;
@@ -107,11 +128,7 @@ $navbar-default-bg: white;
  */
 
 /* Links */
-a,
-a:focus,
-a:hover {
-  color: #fff;
-}
+
 
 /* Custom default button */
 .btn-default,
@@ -138,15 +155,14 @@ body {
   background-attachment: fixed;
   height: 680px;
   margin: 0px;
+  background-size: cover;
   background-position: center;
-
+  background-attachment: fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-
-  color: #fff;
+  background-size: cover;
   text-align: center;
-  text-shadow: 0 1px 3px rgba(0,0,0,.5);
 }
 
 /* Extra markup and styles for table-esque vertical and horizontal centering */
@@ -275,6 +291,8 @@ body {
     width: 700px;
   }
 }
+
+
 
 
 
